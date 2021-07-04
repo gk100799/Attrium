@@ -64,10 +64,10 @@ def csvUpload():
     if form.validate_on_submit():
         f = form.file.data
         filename = secure_filename(f.filename)
-        os.chdir('../User Uploads')
+        os.chdir('C:\\Users\\SKrishna\\Desktop\\College work\\Final Year Project\\Code\\Atrium\\User Uploads')
         f.save(os.path.abspath(filename))
 
-        files = glob('../User Uploads/*') 
+        files = glob('C:\\Users\\SKrishna\\Desktop\\College work\\Final Year Project\\Code\\Atrium\\User Uploads\\*') 
         latest_file = max(files, key=os.path.getctime)
 
         df = pd.read_csv(latest_file, header=None)
