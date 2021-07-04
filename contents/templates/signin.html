@@ -1,0 +1,43 @@
+{%  extends 'base.html' %}
+{% block body %}
+    <div class="row sign-in-sec">
+        <div class="col l6 sign-in-side">
+            <div class="log-in-box">
+                <h1>Sign in to Atrium</h1>
+                <form method="post" action="">
+                    {{ form.csrf_token() }}
+                    {{ form.hidden_tag() }}
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i id="icons" class="material-icons prefix">email</i>
+                            
+                            {% if form.email.errors %}
+                            {{ form.email(id="icon_email", class="is-invalid", placeholder='Email') }}
+                                {% for error in form.email.errors %}
+                                    <span class="error-msg">{{ error }}</span>
+                                {% endfor %}
+                            {% else %}
+                                {{ form.email(id="icon_email", placeholder='Email') }}
+                            {% endif %}
+
+                        </div>
+                        <div class="input-field col s12">
+                            <i id="icons" class="material-icons prefix">lock</i>
+                            {{ form.password(id="icon_lock", placeholder='Password') }}
+                        </div>
+                    </div>
+                    {{ form.sign_in(id="sign-btn") }}
+                </form>
+                <p>Do not have an account yet? <b> <a href="{{ url_for('signUp') }}">Sign Up</a> </b></p>
+            </div>
+
+            {% if message %}
+            <div id="no-account">
+                <p>{{ message }}</p>
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="col l6 sign-in-backg"></div>
+    </div>
+{% endblock %}

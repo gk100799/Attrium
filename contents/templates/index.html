@@ -1,0 +1,63 @@
+{%  extends 'base.html' %}
+
+{% block head %}{% endblock %}
+
+
+{% block body %}
+<div class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper">
+          <a href="{{ url_for('index') }}" class="brand-logo">Atrium</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a class="links hvr-grow" href="{{ url_for('signUp') }}">Sign In</a></li>
+          </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="main_page">
+    <div class="row">
+        <div id="info-side" class="col l6">
+            <div class="container">
+                <div class="info-box">
+                    <h1>Welcome To Atrium</h1>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit</p>
+                </div>
+            </div>
+        </div>
+        <div id="backg-side" class="col l6"></div>
+    </div>
+</div>
+
+<div class="main-info-page">
+    <div class="container">
+        <h2>Why Choose our service?</h2>
+        <div class="row">
+            <div class="col l4 s12 info-cards hvr-grow">
+                <div>
+                    <h3>Machine Learning</h3>
+                    <i class="medium material-icons">code</i>
+                    <p>Atrium uses Neural Networks to train the machine on the data of patients suffering from Arrhythmia and predicts the condition of your heart</p>
+                </div>
+               
+            </div>
+            <div class="col l4 s12 info-cards hvr-grow">
+                <div>
+                    <h3>Archiving</h3>
+                    <i class="medium material-icons">storage</i>
+                    <p>Atrium securely stores your test reports, such that insight can be drawn on future tests to ensure that you get 
+                    the best treatment possible</p>
+                </div>
+            </div>
+            <div class="col l4 s12 info-cards hvr-grow">
+                <div>
+                    <h3>Connection</h3>
+                    <i class="medium material-icons">perm_phone_msg</i>
+                    <p>Atrium connects you to a doctor should your test results indicate, to ensure that you can reach for advice and
+                    help when required to improve your health</p>
+                </div>
+            </div>
+    </div>
+    
+</div>
+{% endblock %}

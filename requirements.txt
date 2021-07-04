@@ -1,0 +1,17 @@
+Flask_Login==0.5.0
+pandas==1.0.3
+scipy==1.4.1
+Flask_WTF==0.14.3
+Flask_SQLAlchemy==2.4.1
+biosppy==0.6.1
+wfdb==2.2.1
+Werkzeug==1.0.1
+numpy==1.18.2
+Keras==2.3.1
+Flask_Bcrypt==0.7.1
+WTForms==2.2.1
+Flask==1.1.2
+scikit_learn==0.23.1
+wfdb==2.2.1
+matplotlib==3.2.1
+glob2==0.4.1

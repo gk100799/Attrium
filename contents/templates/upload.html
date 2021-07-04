@@ -1,0 +1,106 @@
+{%  extends 'base.html' %}
+
+{% block head %}{% endblock %}
+
+{% block body %}
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="{{ url_for('index') }}" class="brand-logo hvr-grow">Atrium</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a class="hvr-grow" href="{{ url_for('results') }}">Results</a></li>
+                    <li><a class="hvr-grow" href="{{ url_for('signIn') }}">Sign Out</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="upload_page">
+        <div class="row">
+            <div id="upload-file-side" class="col l6">
+                <div class="container">
+                    <div class="upload-box">
+                        <h1>Upload your ECG report</h1>
+                        <div class="form-box">
+                            <form method="post" action="" enctype="multipart/form-data">
+                                {{ form.csrf_token() }}
+                                {{ form.hidden_tag() }}
+                                <div class="row">
+                                    <div class="col s12">
+                                        {{ form.file(id="icon_file") }}
+                                        <button class="btn upload-btn" type="submit"><i id="attach-icon" class="material-icons prefix">file_upload</i>Upload</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div id="upload-backg-side" class="col l6"></div>
+        </div>
+    </div>
+
+    {% if showReport %}
+        <div class="output-page">
+            <div class="container report-section">
+                <h1 align="center">Report</h1>
+                <div class="report-box">
+                    {% if output == 'Normal' %}
+                        <div class="class_absent">
+                            <div class="row">
+                                <div class="col l6 class-absent-content hvr-grow">
+                                    <h2>You are healthy</h2>
+                                    <p>Based on the analysis of your ECG report, arrhythmia was not detected</p>
+                                    <p>Do not forget to exercise though</p>
+                                </div>
+                                <div class="col l6 class-absent-image">
+                                    <img src="../static/images/fit.jpeg">
+                                </div>
+                            </div>
+                        </div>
+                        
+                    {% else %}
+                        <div class="class-present">
+                            <div class="row">
+                                <div class="col l6 class-present-content hvr-grow">
+                                    <h2>{{ output }}</h2>
+                                    <p>Based on the analysis of your ECG report, {{ output }} was detected</p>
+                                    <p>It is recommended that you consult a heart specialist immediately</p>
+                                </div>
+                                <div class="col l6 class-present-image">
+                                    <img src="../static/images/not_fit.png">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="to-do-list">
+                            <div class="row">
+                                <div class="col l6 todo-image">
+                                    <img src="../static/images/health.png">
+                                </div>
+                                <div class="col l6 todo-content hvr-grow">
+                                    <h3>A todo list</h3>
+                                    <ul>
+                                        <li>Stay hydrated</li>
+                                        <li>Exercise regularly</li>
+                                        <li>Keep your electrolytes balanced</li>
+                                        <li>Avoid alcohol</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="output_page">
+
+        </div>
+    {% endif %}
+
+
+
+{% endblock %}

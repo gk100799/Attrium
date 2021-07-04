@@ -1,0 +1,58 @@
+{%  extends 'base.html' %}
+
+{% block head %}{% endblock %}
+
+{% block body %}
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+            <a href="{{ url_for('index') }}" class="brand-logo hvr-grow">Atrium</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a class="hvr-grow" href="{{ url_for('csvUpload') }}">Upload</a></li>
+                <li><a class="hvr-grow" href="{{ url_for('signIn') }}">Sign Out</a></li>
+            </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div>
+        <div class="row">
+            <div class="col l6">
+                <div id="results-box" class="container">
+                    <h1>Hello</h1>
+                    <h2>{{ current_user.name }}</h2>
+                    
+                    {% if count == 0 %}
+                        <h3>Oops..No test records found</h3>
+                    {% else %}
+                        <table>
+                            <td>
+                                <th>Date of testing</th>
+                                <th>Result</th>
+                            </td>
+                        {% for res in test_results %}
+                        {% if current_user.id == res.user_id %}
+                            <tr class="data-row">
+                                {% if res.result == 'Normal' %}
+                                    <td>
+                                        <img src="../static/images/Bubble-01.png" width="30px" height="30px"> 
+                                    </td>
+                                {% else %}
+                                    <td>
+                                        <img src="../static/images/Bubble-02.png" width="30px" height="30px"> 
+                                    </td>
+                                {% endif %}
+                                <td>{{ res.date_test.strftime("%B %d, %Y") }}</td>
+                                <td>{{ res.result }}</td>
+                            </tr>
+                        {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    </table>
+                </div>
+            </div>
+            <div id="results-backg-side" class="col l6 ">
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,77 @@
+{%  extends 'base.html' %}
+{% block body %}  
+    <div class="row sign-up-sec">
+        <div class="col l6 sign-up-backg"></div>
+        <div class="col l6 sign-up-side">
+            <div class="sign-up-box">
+                <h1>Sign up to Atrium</h1>
+                <form method="post" action="" class="col s12">
+                    {{ form.csrf_token() }}
+                    {{ form.hidden_tag() }}
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i id="icons" class="material-icons prefix">person</i>
+                            
+                            {% if form.name.errors %}
+                                {{ form.name(id="icon_person", class="is-invalid", placeholder='Name') }}
+                                {% for error in form.name.errors %}
+                                    <span class="error-msg">{{ error }}</span>
+                                {% endfor %}
+                            {% else %}
+                                {{ form.name(id="icon_person", placeholder='Name') }}
+                            {% endif %}
+
+                        </div>
+                        <div class="input-field col s12">
+                            <i id="icons" class="material-icons prefix">email</i>
+                            
+                            {% if form.email.errors %}
+                            {{ form.email(id="icon_email", class="is-invalid", placeholder='Email') }}
+                                {% for error in form.email.errors %}
+                                    <span class="error-msg">{{ error }}</span>
+                                {% endfor %}
+                            {% else %}
+                                {{ form.email(id="icon_email", placeholder='Email') }}
+                            {% endif %}
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <i id="icons" class="material-icons prefix">lock</i>
+
+                            {% if form.password.errors %}
+                            {{ form.password(id="icon_lock", class="is-invalid", placeholder='Password') }}
+                                {% for error in form.password.errors %}
+                                    <span class="error-msg">{{ error }}</span>
+                                {% endfor %}
+                            {% else %}
+                                {{ form.password(id="icon_lock", placeholder='Password') }} 
+                            {% endif %}
+
+                        </div>
+                        <div class="input-field col s6">
+                            <i id="icons" class="material-icons prefix">lock</i>
+
+                            {% if form.confirm_password.errors %}
+                                {{ form.confirm_password(id="icon_lock", class="is-invalid", placeholder='Confirm Password') }}
+                                {% for error in form.confirm_password.errors %}
+                                    {% if error == 'Password must be between 8 and 20 characters' %}
+                                        <span></span>
+                                    {% else %}
+                                        <span class="error-msg">{{ error }}</span>
+                                    {% endif %}
+                                {% endfor %}
+                            {% else %}
+                                {{ form.confirm_password(id="icon_lock", placeholder='Confirm Password') }} 
+                            {% endif %}
+
+                        </div>
+                    </div>
+                    {{ form.sign_up(id="sign-btn", class="btn") }}
+                </form>
+                <p>Already have an account? <b><a href="{{ url_for('signIn') }}">Sign In</a></b></p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
