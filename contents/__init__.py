@@ -14,7 +14,8 @@ db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 
-app.config['UPLOAD_FOLDER'] = 'C:\\Users\\SKrishna\\Desktop\\College work\\Final Year Project\\Code\\Atrium\\User Uploads'
+# app.config['UPLOAD_FOLDER'] = 'C:\\Users\\SKrishna\\Desktop\\College work\\Final Year Project\\Code\\Atrium\\User Uploads'
+app.config['UPLOAD_FOLDER'] = '../User Uploads'
 #Maximum file size in bytes
 app.config['MAX_FILE_SIZE'] = 10485760
 
