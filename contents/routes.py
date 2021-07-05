@@ -13,6 +13,7 @@ from tensorflow.keras.utils import to_categorical
 import numpy as np
 import pandas as pd
 from collections import Counter
+import sys
 
 model = load_model('atrium_model.h5')
 
@@ -65,11 +66,11 @@ def csvUpload():
         f = form.file.data
         filename = secure_filename(f.filename)
         # os.chdir('C:\\Users\\SKrishna\\Desktop\\College work\\Final Year Project\\Code\\Atrium\\User Uploads')
-        os.chdir('../User Uploads')
+        os.chdir(sys.path.append(os.path.abspath('../User Uploads')))
         f.save(os.path.abspath(filename))
 
         # files = glob('C:\\Users\\SKrishna\\Desktop\\College work\\Final Year Project\\Code\\Atrium\\User Uploads\\*') 
-        files = glob('../User Uploads')
+        files = glob(sys.path.append(os.path.abspath('../User Uploads')))
         latest_file = max(files, key=os.path.getctime)
 
         df = pd.read_csv(latest_file, header=None)
